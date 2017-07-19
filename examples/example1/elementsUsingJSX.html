@@ -7,10 +7,31 @@
 	<script src="https://fb.me/react-0.14.3.js"></script>
 	<script src="https://fb.me/react-dom-0.14.3.js"></script>
 	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+	<style>
+		.container {
+			color: #de1515;
+		}
+	</style>
 </head>
 
 
 <body>
+	<div id="react-app">
+
+
+	</div>
+	<!-- Including his script tag makes Babel transform the JSX into js at build time,
+		instead of being rendered by the browser -->
+	<script type="text/babel">
+		var listOfPeople = 
+			<ul classname="container">
+				<li key="item1">Albus Dumbledore</li>
+				<li key="item2">Severus Snape</li>
+				<li key="item3">Hermione Granger</li>
+				<li key="item4">Bilbo Baggins</li>
+			</ul>
+	</script>
 </body>
 
 </html>
