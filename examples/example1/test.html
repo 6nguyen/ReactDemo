@@ -10,8 +10,15 @@
 	<body>
 	<div id="react-app">
 		<script>
-			// React.createElement('element you want to create', {object attributes (ours is empty)}, content )
+			// React.createElement(arg1, arg2, arg3 )
+			// arg1: element you want to create
+			// arg2: {} object attributes.  Ours is empty
+			// arg3: content
 			var headerReactEl = React.createElement('h3', {}, 'Hello React World!');
+			// mounts the element in the DOM as a child of the element with id "react-app"
+			// ReactDOM.render(arg1, arg2)
+			// arg1: element you want to mount into DOM
+			// arg2: parent DOM element the React element is rendered into
 			ReactDOM.render(headerReactEl, document.getElementById('react-app'));
 		</script>
 	</div>
