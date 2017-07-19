@@ -22,15 +22,15 @@
 			// arg1: element you want to create
 			// arg2: {} object attributes.  Ours is empty
 			// arg3: content
-			var headerReactEl = React.createElement('h3', {}, 'Hello React World!');
+			var headerReactEl = React.createElement('h2', {key: 'header'}, 'Hello React World!');
 
 
-			var headerElement = React.createElement('h2', {id: 'header-id', key: 'header'}, 'Let\'s get started!');
+			var headerElement = React.createElement('h3', {id: 'header-id', key: 'subheader'}, 'Let\'s get started!');
 			var paragraphElement = React.createElement('p', {key: 'paragraph'}, 
 				'Components, composition, virtual DOM, and more - YAY!');
 			// react Fragments are arrays of react elements (also called react nodes)
 			// Each React element/node in a fragment needs a unique 'key' value
-			var reactFragment = [headerElement, paragraphElement];
+			var reactFragment = [headerReactEl, headerElement, paragraphElement];
 			// section element/node that contains the fragment containing h2 and p
 			var sectionElement = React.createElement('section', {className: 'container'}, reactFragment);
 
@@ -39,7 +39,7 @@
 			// ReactDOM.render(arg1, arg2)
 			// arg1: element you want to mount into DOM
 			// arg2: parent DOM element (div) the React element is rendered into
-			ReactDOM.render(headerReactEl, document.getElementById('react-app'));
+			ReactDOM.render(sectionElement, document.getElementById('react-app'));
 
 		</script>
 	</div>
