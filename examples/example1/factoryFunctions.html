@@ -23,6 +23,16 @@
 		var listItem1 = React.DOM.li({key: 'item-1'}, 'Albus Dumbledore');
 		var listItem2 = React.DOM.li({key: 'item-2'}, 'Severus Snape');
 		var listItem3 = React.DOM.li({key: 'item-3'}, 'Hermione Granger');
+		var listItem4 = React.DOM.li({key: 'item-4'}, 'Bilbo Baggins');
+
+		// put the list items into a React fragment
+		var reactFragment = [listItem1, listItem2, listItem3, listItem4];
+
+		// put the fragment with list items inside an ul react node
+		var listElement = React.DOM.ul({classname: 'container'}, reactFragment);
+
+		// render the react nodes onto the screen
+		ReactDOM.render(listElement, document.getElementById('react-app'));
 	</script>
 </body>
 
