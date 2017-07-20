@@ -22,7 +22,7 @@ var helloWorldJSX = React.createClass({
 	render: function() {
 		return <h3 className='highlight-jsx'>
             Hello world, from a component using JSX!
-        </h3>
+        </h3>   
     }
 });
 
