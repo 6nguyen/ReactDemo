@@ -30,6 +30,7 @@
 				'Components, composition, virtual DOM, and more - YAY!');
 			// react Fragments are arrays of react elements (also called react nodes)
 			// Each React element/node in a fragment needs a unique 'key' value
+			// Each node inside the fragment are siblings
 			var reactFragment = [headerReactEl, headerElement, paragraphElement];
 			// section element/node that contains the fragment containing h2 and p
 			var sectionElement = React.createElement('section', {className: 'container'}, reactFragment);
