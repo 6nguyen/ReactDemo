@@ -22,20 +22,19 @@ var Greeting = React.createClass({
 function Hello() {
     // JSX understands curly braces and parses the JS code within it
     var now = new Date();
-    return
-        <div className="pink">
-            Hello! The current year is {now.getFullYear()}
-        </div>
+    return (
+        <div className="pink">Hello! The current year is {now.getFullYear()}</div>
+        );
 }
 
 function Hi() {
     var now = new Date();
     var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    return
+    return (
         <div className="blue">
             Hi! Today is {days[now.getDay()]}
         </div>
+    );
 }
 
-ReactDOM.render(<Greeting />,
-    document.getElementById('reactclass-1'));
+ReactDOM.render(<Greeting />,document.getElementById('reactclass-1'));
