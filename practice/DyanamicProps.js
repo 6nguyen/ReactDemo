@@ -2,20 +2,20 @@
 // What if we use a lot of blue boxes?
 // Instead of retreiving the prop value from ReactDOM.render, we can assign it like so
 function BlueBox(props){
-    return <Box color="blue"></Box>
+    return <Box color="royalblue"></Box>
 }
 
 function GreenBox(props){
-    return <Box color="green"></Box>
+    return <Box color="lawngreen"></Box>
 }
 
 function RedBox(props){
-    return <Box color="red"></Box>
+    return <Box color="orangered"></Box>
 }
 
 // Step 3:
 // We can also make a randomized box
-function MysterBox(props) {
+function MysteryBox(props) {
     const Boxes = [
         BlueBox,
         RedBox,
@@ -31,7 +31,7 @@ function MysterBox(props) {
 // Style attributes must be set using an object with all the style specs in it
 function Box(props) {
     const divStyle = {
-        backgroundColor: p rops.color
+        backgroundColor: props.color
     };
     
     return (
@@ -39,9 +39,8 @@ function Box(props) {
     );
 }
 
-
-ReactDOM.render(<Box color="aquamarine" />, document.getElementById("component1"));
+ReactDOM.render(<GreenBox />, document.getElementById("component1"));
 ReactDOM.render(<BlueBox />, document.getElementById("component2"));
 ReactDOM.render(<MysteryBox 
-                    randomIndex={Math.floor(Math.random()*3}/>
-                    , document.getElementById("component3)")); 
+                    randomIndex={Math.floor(Math.random()*3)}/>
+                    , document.getElementById("component3")); 
