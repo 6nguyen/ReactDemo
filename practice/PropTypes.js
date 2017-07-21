@@ -1,8 +1,12 @@
 /* 
     Javascript is NOT a type-specific language, so variables can change type.
+    
     React, however, does support types.  Must be assigned with propTypes:{}
     If a type is incorrect, it will show up in debugger console, but still execute.
     This ONLY WORKS IN DEVELOPER, NOT PRODUCTION, to make sure things work.
+    
+    React also supports Prop validation with .isRequired
+    If a prop with this validation is not declared, error message will show in log
 */
 
 var Contents = React.createClass ({
@@ -13,6 +17,7 @@ var Contents = React.createClass ({
        notString: React.PropTypes.string,
        notInt: React.PropTypes.number,
        notBool: React.PropTypes.bool,
+       required: React.PropTypes.string.isRequired,
    },
     
     getDefaultProps: function() {
@@ -37,6 +42,7 @@ var Contents = React.createClass ({
                 <div>Not String: {this.props.notString}</div>
                 <div>Not Integer: {this.props.notInt ? "false" : "true"}</div>
                 <div>Not Boolean: {this.props.notBool}</div>
+                <div>Required: {this.props.required}</div>
             </div>
         );
     }
