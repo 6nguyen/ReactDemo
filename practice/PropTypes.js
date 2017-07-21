@@ -6,7 +6,9 @@
     This ONLY WORKS IN DEVELOPER, NOT PRODUCTION, to make sure things work.
     
     React also supports Prop validation with .isRequired
-    If a prop with this validation is not declared, error message will show in log
+    If a prop with this validation is not specificed, error message will show in log.
+    
+    Validation can also be done with a method
 */
 
 var Contents = React.createClass ({
@@ -14,10 +16,19 @@ var Contents = React.createClass ({
        string: React.PropTypes.string,
        int: React.PropTypes.number,
        boolean: React.PropTypes.bool,
+       
        notString: React.PropTypes.string,
        notInt: React.PropTypes.number,
        notBool: React.PropTypes.bool,
+       
        required: React.PropTypes.string.isRequired,
+       
+       acceptedValues: function(properties, propertyName, componentName){
+           var propertyValue = properties[propertyName];
+           if (propertyValue != 'Hello' && propertyValue != 'Hey') {
+               throw Error("The only accepted values are 'Hello' and 'Hey'.");
+           }
+       }
    },
     
     getDefaultProps: function() {
@@ -28,7 +39,9 @@ var Contents = React.createClass ({
             
             notString: 4,
             notInt: false,
-            notBool: "This is not a boolean"
+            notBool: "This is not a boolean",
+            
+            acceptedValues: "Good Bye",
         };
     },
     
@@ -42,7 +55,10 @@ var Contents = React.createClass ({
                 <div>Not String: {this.props.notString}</div>
                 <div>Not Integer: {this.props.notInt ? "false" : "true"}</div>
                 <div>Not Boolean: {this.props.notBool}</div>
+                <br/>
                 <div>Required: {this.props.required}</div>
+                <br/>
+                <div>Unacceptable Value: {this.props.acceptedValues}</div>
             </div>
         );
     }
