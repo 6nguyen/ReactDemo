@@ -37,4 +37,4 @@ function Hi() {
     );
 }
 
-ReactDOM.render(<Greeting />,document.getElementById('reactclass-1'));
+ReactDOM.render(<Greeting />,document.getElementById('reactClass1'));
