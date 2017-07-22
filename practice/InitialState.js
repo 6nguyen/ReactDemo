@@ -15,6 +15,16 @@ var Box = React.createClass({
         }
     },
     
+    // Randomly changes text color
+    handleTextColorClick: function() {
+        var colors = ['gold', 'lawngreen', 'orangered', 'fuchsia', 'black'];
+        var colorIndex = Math.floor(Math.random()*colors.length);
+        this.setState({
+            textColor: colors[colorIndex]             
+        });
+    },
+    
+    
     // Object divStyle is all the properties we want to apply to the box
     // access the props from the state variables
     render: function() {
@@ -29,7 +39,12 @@ var Box = React.createClass({
                 <div className="box" style={divStyle}>
                     Hello REACT World!
                 </div>
+            
+                <button className="button" onClick={this.handleTextColorClick}>
+                    Change Text Color
+                </button>
             </div>
+
         );
     }
     
