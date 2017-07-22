@@ -1,4 +1,7 @@
-// Stateful components, demonstrated using a stateful box
+/*
+    Stateful components, demonstrated using a stateful box.
+    This example only demonstrates initial state, not changing a state.
+*/
 
 // Box has a background color and text
 // Both properties are part of the STATE of the box
