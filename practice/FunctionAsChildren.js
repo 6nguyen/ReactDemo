@@ -4,6 +4,7 @@
 /* CLEAN CODE *********************************************************** */
 /* Commented code below */
 
+// Child function
 function Numbers(props) {
     var numberList=[];
     
@@ -13,6 +14,7 @@ function Numbers(props) {
     return <div>{numberList}</div>;
 }
 
+// Parent function
 function List(props){
     return (
         <Numbers upto={props.upto}>
