@@ -55,9 +55,9 @@ var CommentList = React.createClass({
 var CommentBox = React.createClass({
 	render: function() {
 		return (
-			<div className="commentBox">
-				<input className="input" />
-				<button className="button" >
+			<div className="newCommentBox">
+				<input className="inputText" />
+				<button className="postButton" >
 					Post
 				</button>
 			</div>
