@@ -11,16 +11,16 @@ var Comment = React.createClass ({
 	// Step 2:  Render the comment box, profile photo, message box, and delete photo
 	render: function() {
 		return (
-			<table className="comment">
+			<table className="commentBox">
 				<tbody>
 					<tr>
-						<td className="photo">
+						<td className="profilePhoto">
 							<img src="images/happyface.png" />
 						</td>
-						<td className="message">
+						<td className="messageText">
 							Write your own comment!
 						</td>
-						<td className="delete">
+						<td className="deleteIcon">
 							<img src="images/delete.png" />
 						</td>					
 					</tr>
