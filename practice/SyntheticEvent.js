@@ -16,6 +16,8 @@ var Counter = React.createClass({
 
 
 	// Step 4: Create function to increment based on event
+	// if shift key is held down during click event, increment counter by 5
+	// if alt key is held down during click event, increment counter by 100
 	handleIncrement: function(event) {
 		var increment = 1;
 
