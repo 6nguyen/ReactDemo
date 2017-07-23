@@ -47,5 +47,25 @@ var CommentList = React.createClass({
 });
 
 
-// Step 2: Render the single comment component to screen to make sure everything works
-ReactDOM.render(<CommentList />, document.getElementById('component1'));
+// Step 5:  Create CommentBox component to add a new comment
+	// render: commentBox, input, button
+	// commentBox contains the new comment/message
+	// input is the input field to enter text
+	// button is the 'Post' button to post the comment
+var CommentBox = React.createClass({
+	render: function() {
+		return (
+			<div className="commentBox">
+				<input className="input" />
+				<button className="button" >
+					Post
+				</button>
+			</div>
+		);
+	}
+});
+
+// Step 2: Render the single Comment component to screen to make sure everything works
+// Step 4: Render the CommentList component to see if it works
+ReactDOM.render(<CommentBox />, document.getElementById('component1'));
+ReactDOM.render(<CommentList />, document.getElementById('component2'));
