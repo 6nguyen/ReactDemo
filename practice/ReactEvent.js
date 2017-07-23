@@ -12,21 +12,23 @@ var Counter = React.createClass({
 	},
 
 
-	// Step 4:  Create function to handle button click
-	// Set the new state of counter by accessing previous state
-	handleIncrementClick: function(e) {
-		console.log("Event type: " + e.type + ". Counter value: " + this.state.counter);
 
+	// Step 4: Create function to detect Events
+	logEvent: function(e) {
+		console.log("Event type: " + e.type + "  Counter value: " + this.state.counter);
+	},
+
+
+	// Step 5:  Create function to handle button click
+	// Accepts a Synthetic Event as arg
+	// Synthetic events wrap all React events 
+	handleIncrementClick: function(e) {
+		this.logEvent(e);
 		this.setState(function(prevState, props) {
 			return {
 				counter: prevState.counter + 1
 			}
 		});	
-	},
-
-	// Step 5: Create function to handle mouse over
-	handleMouseOver: function() {
-		console.log("Mouse over capture detected.  Counter value: " + this.state.counter);
 	},
 
 
@@ -42,7 +44,7 @@ var Counter = React.createClass({
 
 				<button classNme="button" 
 				onClick={this.handleIncrementClick}
-				onMouseOverCapture={this.handleMouseOver}>
+				onMouseOverCapture={this.logEvent}>
 					Increment Counter
 				</button>
 			</div>
