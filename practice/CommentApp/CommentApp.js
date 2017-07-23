@@ -4,7 +4,7 @@
 	UI files are kept in
 */
 
-// Step 1:  Create the Comment component
+// Step 1:  Create the Comment component for a single comment
 var Comment = React.createClass ({
 
 
@@ -27,10 +27,25 @@ var Comment = React.createClass ({
 				</tbody>
 			</table>
 		);
-
 	}
-
-
 });
 
-ReactDOM.render(<Comment />, document.getElementById('component1'));
+// Step 3: Create the CommentList component to display list of comments
+	// render a commentList div to contain a list of Comment components
+	// hardcode the fragment key values first, to test if it displays properly
+var CommentList = React.createClass({
+	render: function() {
+		return (
+			<div className="commentList">
+				<Comment key={1} />
+				<Comment key={2} />
+				<Comment key={3} />
+				<Comment key={4} />
+			</div>
+		);
+	}
+});
+
+
+// Step 2: Render the single comment component to screen to make sure everything works
+ReactDOM.render(<CommentList />, document.getElementById('component1'));
