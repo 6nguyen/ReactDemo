@@ -18,7 +18,7 @@ var Comment = React.createClass ({
 							<img src="images/happyface.png" />
 						</td>
 						<td className="messageText">
-							Write your own comment!
+							Placeholder comment...
 						</td>
 						<td className="deleteIcon">
 							<img src="images/delete.png" />
@@ -65,7 +65,11 @@ var CommentBox = React.createClass({
 	}
 });
 
+
+// Step 7:  Create CommentApp component 
+
 // Step 2: Render the single Comment component to screen to make sure everything works
 // Step 4: Render the CommentList component to see if it works
+// Step 6: Render the CommentBox component to see if it works
 ReactDOM.render(<CommentBox />, document.getElementById('component1'));
 ReactDOM.render(<CommentList />, document.getElementById('component2'));
