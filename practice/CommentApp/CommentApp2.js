@@ -5,21 +5,20 @@
 */
 
 // Step 1:  Create the Comment component for a single comment
-var Comment = React.createClass({
-    
+var Comment = React.createClass({    
 	// Step 2:  Render the comment box that holds profile photo, message text, and delete photo
     render: function() {
         return (
             <table className="commentBox">
                 <tbody>
                     <tr>
-                        <td className="profilePhoto" >
-                            <img src = "images/happyface.png" />
+                        <td className="profilePhoto">
+                            <img src="images/happyface.png" />
                         </td>
-                        <td className="messageText" >
+                        <td className="messageText">
                             Placeholder comment...
                         </td>
-                        <td className="deleteIcon" >
+                        <td className="deleteIcon">
                             <img src="images/delete.png" />
                         </td>
                     </tr>
@@ -28,6 +27,7 @@ var Comment = React.createClass({
         );
     }
 });
+    
 
 // Step 4: Create the CommentList component to display list of comments
 	// render a commentList div to contain a list of Comment components
@@ -57,7 +57,7 @@ var CommentBox = React.createClass({
             <div className="newCommentBox" >
                 <input className="inputText" />
                 <button className="postButton" >
-                    post
+                    Post
                 </button>
             </div>
         );
