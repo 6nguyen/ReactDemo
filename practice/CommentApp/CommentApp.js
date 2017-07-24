@@ -8,7 +8,7 @@
 // Step 15: Add deleteComment func to call CommentApp's deleteComment
 	// func called on CommentList's index element
 var Comment = React.createClass ({
-	
+
 	deleteComment: function() {
 		this.props.deleteComment(this.props.index);
 	},
@@ -136,6 +136,9 @@ var CommentApp = React.createClass({
 		});
 	},
 	deleteComment: function(index) {
+		if (!(confirm('There will be no way to restore this comment once deleted.  Is that okay?')))
+			return false;
+
 		this.setState(function(prevState) {
 			var newMessages = prevState.messages.concat();
 			newMessages.splice(index,1);
