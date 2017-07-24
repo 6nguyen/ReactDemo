@@ -15,7 +15,7 @@ var Comment = React.createClass ({
 				<tbody>
 					<tr>
 						<td className="profilePhoto">
-							<img src="images/happyface.png" />
+							<img src={this.props.picture} />
 						</td>
 						<td className="messageText">
 							{this.props.message}	
@@ -43,9 +43,11 @@ var CommentList = React.createClass({
 	render: function() {
 		return (
 			<div className="commentList"> {
-
+				this.props.photos.map(
+					(tempPicture) => <Comment key={tempPicture} picture={tempPicture} />
+				),
 				this.props.messages.map(
-					(message) => <Comment key={message} message={message} />
+					(tempMessage) => <Comment key={tempMessage} message={tempMessage} />
 				)
 			}
 			</div>
@@ -82,6 +84,12 @@ var CommentApp = React.createClass({
 				"I can't even right now...",
 				"Literally was just thinking the same thing!",
 				"Lol preach girl"
+			],
+			photos: [
+				"images/happyface.png",
+				"images/delete.png",
+				"images/happyface2.png",
+				"images/delete2.png"
 			]
 		}
 	},
@@ -89,7 +97,8 @@ var CommentApp = React.createClass({
 		return (
 			<div>
 				<CommentBox />
-				<CommentList messages={this.state.messages} />
+				<CommentList messages={this.state.messages} 
+							 photos={this.state.photos} />
 			</div>
 		);
 	}
