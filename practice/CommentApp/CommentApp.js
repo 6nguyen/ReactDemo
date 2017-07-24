@@ -8,7 +8,7 @@
 var Comment = React.createClass ({
 
 
-	// Step 2:  Render the comment box, profile photo, message box, and delete photo
+	// Step 2:  Render the comment box, profile photo, message text, and delete photo
 	render: function() {
 		return (
 			<table className="commentBox">
@@ -18,7 +18,7 @@ var Comment = React.createClass ({
 							<img src="images/happyface.png" />
 						</td>
 						<td className="messageText">
-							Placeholder comment...
+							{this.props.message}	
 						</td>
 						<td className="deleteIcon">
 							<img src="images/delete.png" />
@@ -33,14 +33,21 @@ var Comment = React.createClass ({
 // Step 3: Create the CommentList component to display list of comments
 	// render a commentList div to contain a list of Comment components
 	// hardcode the fragment key values first, to test if it displays properly
+	// <Comment key={1} />
+// Step 10: Replace hard coded messages with initialState messages
+	// map this.prop.messages to a lambda expression
+	// lambda expr turns each element of messages into a Comment component 'message'
+	// accepts 'message' as arg, and returns Comment type. 'message' is made up name
+	// makes its arg its key since all messages will be unique and sets message=arg
 var CommentList = React.createClass({
 	render: function() {
 		return (
-			<div className="commentList">
-				<Comment key={1} />
-				<Comment key={2} />
-				<Comment key={3} />
-				<Comment key={4} />
+			<div className="commentList"> {
+
+				this.props.messages.map(
+					(message) => <Comment key={message} message={message} />
+				)
+			}
 			</div>
 		);
 	}
@@ -65,11 +72,33 @@ var CommentBox = React.createClass({
 	}
 });
 
-
 // Step 7:  Create CommentApp component 
+// Step 9:  Specify initial state for messages: values
+var CommentApp = React.createClass({
+	getInitialState: function () {
+		return {
+			messages: [
+				"LMAO this made my day!",
+				"I can't even right now...",
+				"Literally was just thinking the same thing!",
+				"Lol preach girl"
+			]
+		}
+	},
+	render: function() {
+		return (
+			<div>
+				<CommentBox />
+				<CommentList messages={this.state.messages} />
+			</div>
+		);
+	}
+});
+
 
 // Step 2: Render the single Comment component to screen to make sure everything works
 // Step 4: Render the CommentList component to see if it works
 // Step 6: Render the CommentBox component to see if it works
-ReactDOM.render(<CommentBox />, document.getElementById('component1'));
-ReactDOM.render(<CommentList />, document.getElementById('component2'));
+// Step 8: Render CommentApp and make sure it displays both components.
+// 			Delete other ReactDOM.render
+ReactDOM.render(<CommentApp />, document.getElementById('component1'));
