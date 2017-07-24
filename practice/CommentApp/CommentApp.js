@@ -15,7 +15,7 @@ var Comment = React.createClass ({
 				<tbody>
 					<tr>
 						<td className="profilePhoto">
-							<img src={this.props.picture} />
+							<img src="images/happyface.png" />
 						</td>
 						<td className="messageText">
 							{this.props.message}	
