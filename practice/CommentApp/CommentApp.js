@@ -76,6 +76,12 @@ var CommentBox = React.createClass({
 
 // Step 7:  Create CommentApp component 
 // Step 9:  Specify initial state for messages: values
+// Step 11: Create addComment method to change state 'messages' at HIGH level
+//		addComment accesses prevState to get the old list of comments and append
+// 		the new comment, creating a new list of comments.
+// 		A newMessages array is created by copying the prevState messages using .concat()
+// 		The new comment is pushed into this new array.
+//		setState returns an object of the changed states and their value pairs
 var CommentApp = React.createClass({
 	getInitialState: function () {
 		return {
@@ -93,10 +99,19 @@ var CommentApp = React.createClass({
 			]
 		}
 	},
+	addComment: function(comment) {
+		this.setState(function(prevState){
+			var newMessages = prevState.messages.concat();
+			newMessages.push(comment);
+			return {
+				messages: newMessages
+			}
+		});
+	},
 	render: function() {
 		return (
 			<div>
-				<CommentBox />
+				<CommentBox addComment={this.addComment}/>
 				<CommentList messages={this.state.messages} 
 							 photos={this.state.photos} />
 			</div>
