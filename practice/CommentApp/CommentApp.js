@@ -5,8 +5,13 @@
 */
 
 // Step 1:  Create the Comment component for a single comment
+// Step 15: Add deleteComment func to call CommentApp's deleteComment
+	// func called on CommentList's index element
 var Comment = React.createClass ({
-
+	
+	deleteComment: function() {
+		this.props.deleteComment(this.props.index);
+	},
 
 	// Step 2:  Render the comment box, profile photo, message text, and delete photo
 	render: function() {
@@ -20,7 +25,7 @@ var Comment = React.createClass ({
 						<td className="messageText">
 							{this.props.message}	
 						</td>
-						<td className="deleteIcon">
+						<td className="deleteIcon" onClick={this.deleteComment} >
 							<img src="images/delete.png" />
 						</td>					
 					</tr>
@@ -39,15 +44,23 @@ var Comment = React.createClass ({
 	// lambda expr turns each element of messages into a Comment component 'message'
 	// accepts 'message' as arg, and returns Comment type. 'message' is made up name
 	// makes its arg its key since all messages will be unique and sets message=arg
+// Step 14: Add deleteComment func
+	// Each message in commentList needs an index so we can delete the right comment
+	// In existing lambda expr, assign each Comment an incrementing index value
+	// Use spread operator to pass CommentApp's deleteComment func into each element
 var CommentList = React.createClass({
 	render: function() {
+		var index = 0;
+
 		return (
 			<div className="commentList"> {
 				this.props.photos.map(
 					(tempPicture) => <Comment key={tempPicture} picture={tempPicture} />
 				),
 				this.props.messages.map(
-					(tempMessage) => <Comment key={tempMessage} message={tempMessage} />
+					(tempMessage) => <Comment key={tempMessage} message={tempMessage} 
+											index={index++} 
+											{...this.props} />
 				)
 			}
 			</div>
@@ -84,13 +97,18 @@ var CommentBox = React.createClass({
 
 // Step 7:  Create CommentApp component 
 // Step 9:  Specify initial state for messages: values
-// Step 11: Create addComment method to change state 'messages' at HIGH level
-//		addComment accesses prevState to get the old list of comments and append
-// 		the new comment, creating a new list of comments.
-// 		A newMessages array is created by copying the prevState messages using .concat()
-// 		The new comment is pushed into this new array.
-//		setState returns an object of the changed states and their value pairs
-//		Then include addComment into render func <CommentBox />
+// Step 11: Create addComment func to change state 'messages' at HIGH level
+	// addComment accesses prevState to get the old list of comments and append
+	// the new comment, creating a new list of comments.
+	// A newMessages array is created by copying the prevState messages using .concat()
+	// The new comment is pushed into this new array.
+	// setState returns an object of the changed states and their value pairs
+	// Then include addComment into render func <CommentBox />
+// Step 13: Create deleteComment func to change state 'messages' at TOP LEVEL
+	// deleteComment accepts an index as arg to delete the indexed element
+	// create newMessage array and copy content from previous state
+	// splice(index, 1) deletes one element from array starting from index
+	// Then include deleteComment into render func <CommentList />
 var CommentApp = React.createClass({
 	getInitialState: function () {
 		return {
@@ -117,11 +135,21 @@ var CommentApp = React.createClass({
 			}
 		});
 	},
+	deleteComment: function(index) {
+		this.setState(function(prevState) {
+			var newMessages = prevState.messages.concat();
+			newMessages.splice(index,1);
+			return {
+				messages: newMessages
+			}
+		});
+	},
 	render: function() {
 		return (
 			<div>
-				<CommentBox addComment={this.addComment}/>
+				<CommentBox addComment={this.addComment} />
 				<CommentList messages={this.state.messages} 
+						deleteComment={this.deleteComment} 
 							 photos={this.state.photos} />
 			</div>
 		);
