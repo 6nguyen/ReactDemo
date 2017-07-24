@@ -61,12 +61,20 @@ var CommentList = React.createClass({
 	// commentBox contains the new comment/message
 	// input is the input field to enter text
 	// button is the 'Post' button to post the comment
+// Step 12: Add input ref attribute, ref="someName" to access input value 
+	// Add addComment func to call CommentApp's addComment func before render func
+	// Pass in the comment input value as its arg with this.refs.someName.value
+	// Add addComment functionality to post button
 var CommentBox = React.createClass({
+	addComment: function() {
+		this.props.addComment(this.refs.commentInput.value);
+	},
 	render: function() {
+
 		return (
 			<div className="newCommentBox">
-				<input className="inputText" />
-				<button className="postButton" >
+				<input ref="commentInput" className="inputText" />
+				<button className="postButton" onClick={this.addComment}>
 					Post
 				</button>
 			</div>
@@ -82,6 +90,7 @@ var CommentBox = React.createClass({
 // 		A newMessages array is created by copying the prevState messages using .concat()
 // 		The new comment is pushed into this new array.
 //		setState returns an object of the changed states and their value pairs
+//		Then include addComment into render func <CommentBox />
 var CommentApp = React.createClass({
 	getInitialState: function () {
 		return {
